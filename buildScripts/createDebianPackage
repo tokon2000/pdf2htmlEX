@@ -71,6 +71,7 @@ find $DEBDIR -type f | xargs md5sum > $md5sumsFile
 versionValue=$PDF2HTMLEX_VERSION.$PDF2HTMLEX_BRANCH.$BUILD_DIST.$BUILD_DATE
 architectureValue=$(dpkg-architecture -q DEB_BUILD_ARCH_CPU)
 #maintainerValue="$(git config --get user.name) <$(git config --get user.email)>"
+maintainerValue="pdf2htmlEX"
 
 # Now create the control file
 #
@@ -82,7 +83,7 @@ echo "Section: universe/web"                                   >> $controlFile
 echo "Priority: optional"                                      >> $controlFile
 echo "Essential: no"                                           >> $controlFile
 echo "Depends:  libglib2.0-0, libfreetype6, libfontconfig1, libcairo2, libpng16-16, libjpeg-turbo8, libxml2" >> $controlFile
-#echo "Maintainer: $maintainerValue"                            >> $controlFile
+echo "Maintainer: $maintainerValue"                            >> $controlFile
 echo "Homepage: http://github.com/pdf2htmlEX/pdf2htmlEX"       >> $controlFile
 echo "Description: Converts PDF to HTML without losing format" >> $controlFile
 echo "  pdf2htmlEX converts PDF to HTML while retaining text, format & style as much as possible" >> $controlFile
